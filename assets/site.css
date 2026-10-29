@@ -1,0 +1,88 @@
+/* Playmoon legal pages: the app's night palette, one deliberate dark look. */
+:root {
+  color-scheme: dark;
+  --night: #0b0a24;
+  --night-deep: #07061a;
+  --dusk: #1a1740;
+  --cream: #f6e3c4;
+  --gold: #f2c98a;
+  --lavender: #d3b3d5;
+  --text: #ece7f5;
+  --muted: #a8a1c4;
+  --hairline: rgba(255, 255, 255, 0.12);
+  --card: rgba(255, 255, 255, 0.05);
+  --display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --body: 'Montserrat', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--night-deep); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  background:
+    radial-gradient(ellipse at 50% 120%, rgba(242, 201, 138, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--night-deep) 0%, var(--night) 40%, var(--dusk) 100%);
+  background-attachment: fixed;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.page { max-width: 720px; margin: 0 auto; padding-block: 28px 64px; }
+
+header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--cream); text-decoration: none; }
+.brand img { width: 44px; height: 44px; border-radius: 12px; }
+.brand span { font-family: var(--display); font-size: 24px; font-weight: 500; }
+
+.langs { display: flex; gap: 6px; }
+.langs a {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.06em; color: var(--muted); text-decoration: none;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid var(--hairline);
+}
+.langs a[aria-current='true'] { color: var(--night); background: var(--cream); border-color: var(--cream); }
+
+nav.links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+nav.links a {
+  color: var(--text); text-decoration: none; font-size: 14px; padding: 7px 14px; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--hairline);
+}
+nav.links a[aria-current='page'] { border-color: var(--gold); color: var(--gold); }
+
+h1 { font-family: var(--display); font-weight: 500; color: var(--cream); font-size: clamp(32px, 6vw, 44px); line-height: 1.15; margin: 36px 0 6px; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 500; color: var(--cream); font-size: 22px; margin: 34px 0 6px; text-wrap: balance; }
+h3 { font-size: 16px; font-weight: 600; color: var(--text); margin: 22px 0 4px; }
+p, li { color: var(--text); }
+.meta { color: var(--muted); font-size: 14px; margin: 0; }
+.lead { font-size: 18px; color: var(--lavender); }
+a { color: var(--gold); }
+a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+ul { padding-left: 1.2em; }
+
+.summary { margin-top: 22px; padding: 18px 20px; border-radius: 18px; background: var(--card); border: 1px solid var(--hairline); }
+.summary ul { margin: 6px 0 0; }
+
+.contact {
+  display: inline-block; margin-top: 8px; padding: 12px 18px; border-radius: 14px; background: var(--card);
+  border: 1px solid var(--hairline); font-weight: 600; color: var(--cream); text-decoration: none; word-break: break-all;
+}
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 28px; }
+.cards a {
+  display: block; padding: 18px 20px; border-radius: 18px; background: var(--card); border: 1px solid var(--hairline);
+  color: var(--text); text-decoration: none; min-width: 0;
+}
+.cards a strong { display: block; font-family: var(--display); font-weight: 500; font-size: 20px; color: var(--cream); }
+.cards a span { color: var(--muted); font-size: 14px; }
+
+footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--hairline); color: var(--muted); font-size: 13px; }
+
+/* Show one language at a time once the script has picked it; without the script both stay readable. */
+html[data-lang='tr'] [lang='en'],
+html[data-lang='en'] [lang='tr'] { display: none !important; }
